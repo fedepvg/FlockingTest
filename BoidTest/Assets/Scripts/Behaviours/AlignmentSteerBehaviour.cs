@@ -6,8 +6,8 @@ public class AlignmentSteerBehaviour : SteerBehaviour
 {
     public override Vector3 GetForce(Boid currentBoid, List<Boid> boids)
     {
-        Vector3 desired_velocity = Vector3.zero;
-        int neighbors_count = 0;
+        Vector3 desiredVelocity = Vector3.zero;
+        int neighborsCount = 0;
 
         foreach (Boid b in boids)
         {
@@ -19,16 +19,16 @@ public class AlignmentSteerBehaviour : SteerBehaviour
 
             if (dist < currentBoid.perceptionRadius)
             {
-                desired_velocity += b.velocity;
-                neighbors_count++;
+                desiredVelocity += b.velocity;
+                neighborsCount++;
             }
         }
 
-        if (neighbors_count > 0)
+        if (neighborsCount > 0)
         {
-            desired_velocity /= neighbors_count;
-            desired_velocity = desired_velocity.normalized * currentBoid.maxSpeed;
-            return desired_velocity * weight;
+            //desiredVelocity /= neighborsCount;
+            desiredVelocity = desiredVelocity.normalized * currentBoid.maxSpeed;
+            return desiredVelocity * weight;
         }
         else
         {

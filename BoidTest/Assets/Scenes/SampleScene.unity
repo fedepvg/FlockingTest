@@ -15367,6 +15367,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   weightSlider: {fileID: 1306155800}
+  separationPerceptionMultiplier: 0.6
 --- !u!1 &665960039
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,6 +11,7 @@ public class Boid : MonoBehaviour
     public GameObject currentWaypoint;
     public GameObject threatPrefab;
     public int foodToConvertInThreat;
+    public float rotationSpeed;
     int foodCount = 0;
 
     // Start is called before the first frame update
@@ -37,7 +38,8 @@ public class Boid : MonoBehaviour
         velocity = Vector3.ClampMagnitude(velocity, maxSpeed);
 
         transform.position += velocity * Time.deltaTime;
-        gameObject.transform.rotation = Quaternion.LookRotation(Vector3.Normalize(velocity));
+        //gameObject.transform.rotation = Quaternion.LookRotation(Vector3.Normalize(velocity));
+        gameObject.transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(Vector3.Normalize(velocity)), rotationSpeed * Time.deltaTime);
     }
 
     private void OnTriggerEnter(Collider other)

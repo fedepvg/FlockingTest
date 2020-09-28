@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SeparationSteerBehaviour : SteerBehaviour
 {
+    public float separationPerceptionMultiplier;
+
     public override Vector3 GetForce(Boid currentBoid, List<Boid> boids) 
     {
         Vector3 desiredVelocity = Vector3.zero;
@@ -17,7 +19,7 @@ public class SeparationSteerBehaviour : SteerBehaviour
             Vector3 diff = currentBoid.transform.position - b.transform.position;
             float dist = Vector3.Distance(currentBoid.transform.position, b.transform.position);
 
-            if (dist < currentBoid.perceptionRadius * 4f)
+            if (dist < currentBoid.perceptionRadius * separationPerceptionMultiplier)
             {
                 countNeighbors++;
                 desiredVelocity = desiredVelocity + Vector3.Normalize(diff) / Mathf.Pow(dist, 2);
@@ -26,7 +28,7 @@ public class SeparationSteerBehaviour : SteerBehaviour
 
         if (countNeighbors > 0)
         {
-            return desiredVelocity * weight;
+            return desiredVelocity.normalized * currentBoid.maxSpeed * weight;
         }
         else
         {

@@ -27,7 +27,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 30
+  m_Radius: 10
   m_Center: {x: 0, y: 4, z: 0}
 --- !u!114 &670080442
 MonoBehaviour:
@@ -43,12 +43,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   steerBehaviours: []
   velocity: {x: 0, y: 0, z: 0}
-  perceptionRadius: 30
+  perceptionRadius: 10
   maxSpeed: 10
   currentWaypoint: {fileID: 0}
   threatPrefab: {fileID: 8877019419938117867, guid: 07755839d515fd149a9a0c228b7011af,
     type: 3}
   foodToConvertInThreat: 2
+  rotationSpeed: 120
 --- !u!1001 &7114005371471138011
 PrefabInstance:
   m_ObjectHideFlags: 0

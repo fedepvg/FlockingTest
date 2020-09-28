@@ -27,8 +27,8 @@ public class CohesionSteerBehaviour : SteerBehaviour
 
         if (neighborsCount > 0)
         {
-            //desiredVelocity /= neighborsCount;
-            //desiredVelocity -= currentBoid.transform.position;
+            desiredVelocity /= neighborsCount;
+            desiredVelocity -= currentBoid.transform.position;
             desiredVelocity = desiredVelocity.normalized * currentBoid.maxSpeed;
             return desiredVelocity * weight;
         }
